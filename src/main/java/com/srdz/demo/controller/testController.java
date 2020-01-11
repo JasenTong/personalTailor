@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Controller
-@RequestMapping("index")
 public class testController {
-    @RequestMapping("hello")
+
+
+    @RequestMapping("index")
     public String show() {
         return "index";
     }

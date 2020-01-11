@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = {"com.srdz.demo"})
-
+@MapperScan(basePackages = {"com.srdz.demo.mapper"})
 public class DemoApplication {
 
     public static void main(String[] args) {
