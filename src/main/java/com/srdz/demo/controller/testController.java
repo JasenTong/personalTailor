@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class testController {
     @GetMapping("/index")
     public String show(){
-        return "hello";
+        return "index.html";
     }
 
 }
