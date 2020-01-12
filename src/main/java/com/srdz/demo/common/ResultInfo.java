@@ -18,7 +18,7 @@ public class ResultInfo {
     private Integer code;
     private String msg;
 
-    public static final ResultInfo ADD_SUCCESS = new ResultInfo(200, "添加成功");
-    public static final ResultInfo ADD_ERROR = new ResultInfo(-1, "添加失败");
+    public static final ResultInfo ADD_SUCCESS = new ResultInfo();
+    public static final ResultInfo ADD_ERROR = new ResultInfo();
 
 }
