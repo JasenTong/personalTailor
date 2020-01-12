@@ -2,12 +2,15 @@ package com.srdz.demo.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -18,6 +21,8 @@ import java.time.LocalDateTime;
  * @since 2020-01-11
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class CustomerLogin implements Serializable {
@@ -48,7 +53,7 @@ public class CustomerLogin implements Serializable {
     /**
      * 最后修改时间
      */
-    private LocalDateTime modifiedTime;
+    private Date modifiedTime;
 
 
 }
