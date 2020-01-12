@@ -2,13 +2,16 @@ package com.srdz.demo.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -21,6 +24,8 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class DesignerInf implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,12 +79,12 @@ public class DesignerInf implements Serializable {
     /**
      * 注册时间
      */
-    private LocalDateTime registerTime;
+    private Date registerTime;
 
     /**
      * 会员生日
      */
-    private LocalDateTime birthday;
+    private Date birthday;
 
     /**
      * 会员级别：1 普通会员，2 青铜，3白银，4黄金，5钻石
@@ -94,7 +99,7 @@ public class DesignerInf implements Serializable {
     /**
      * 最后修改时间
      */
-    private LocalDateTime modifiedTime;
+    private Date modifiedTime;
 
 
 }
