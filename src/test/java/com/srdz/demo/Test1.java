@@ -2,7 +2,6 @@ package com.srdz.demo;
 
 import com.srdz.demo.domain.CustomerAddr;
 import com.srdz.demo.domain.CustomerLogin;
-import com.srdz.demo.service.ICustomerAddrService;
 import com.srdz.demo.service.ICustomerLoginService;
 import com.srdz.demo.service.NewCustomerAddrService;
 import org.junit.jupiter.api.Test;
