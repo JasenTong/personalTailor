@@ -4,6 +4,6 @@
 
     <insert id="insertAddrData" parameterType="com.srdz.demo.domain.CustomerAddr">
         INSERT INTO  customer_addr(customer_id,zip,province,city,district,address,is_default)
-        values(#{customerId},#{zip},#{province},#{city},#{district},#{address},#{isDefault})
+        VALUES (#{customerId},#{zip},#{province},#{city},#{district},#{address},#{isDefault})
     </insert>
 </mapper>
