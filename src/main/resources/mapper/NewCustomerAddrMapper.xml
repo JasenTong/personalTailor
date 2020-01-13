@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.srdz.demo.mapper.NewCustomerAddrMapper">
+
+    <insert id="insertAddrData" parameterType="com.srdz.demo.domain.CustomerAddr">
+        INSERT INTO  customer_addr(customer_id,zip,province,city,district,address,is_default)
+        values(#{customerId},#{zip},#{province},#{city},#{district},#{address},#{isDefault})
+    </insert>
+</mapper>
