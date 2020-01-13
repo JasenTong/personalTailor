@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @SpringBootTest
 public class Test1 {
-    private final static String ADDRESS="上海市普陀区中山北路华东师范大学";
+    private final static String ADDRESS = "上海市普陀区中山北路华东师范大学";
 
     @Autowired
     private ICustomerLoginService customerLoginService;
@@ -32,7 +32,11 @@ public class Test1 {
      */
     @Test
     public void addCustomerLogin() {
-        this.customerLoginService.save(new CustomerLogin(2,"walt", "walt", 1, new Date()));
+        CustomerLogin customerLogin = new CustomerLogin();
+        customerLogin.setLoginName("walt");
+        customerLogin.setPassword("walt");
+        customerLogin.setUserStatus(1);
+        this.customerLoginService.save(customerLogin);
 
     }
 
@@ -40,8 +44,8 @@ public class Test1 {
      * add get and set method to object(CustomerLogin)
      */
     @Test
-    public void insertCustomerLogin(){
-        CustomerLogin customerLogin=new CustomerLogin();
+    public void insertCustomerLogin() {
+        CustomerLogin customerLogin = new CustomerLogin();
         customerLogin.setLoginName("jasen");
         customerLogin.setPassword("123456");
         customerLogin.setUserStatus(1);
@@ -52,8 +56,8 @@ public class Test1 {
      * usee my customized mapper
      */
     @Test
-    public void insertAddrData(){
-        CustomerAddr customerAddr=new CustomerAddr();
+    public void insertAddrData() {
+        CustomerAddr customerAddr = new CustomerAddr();
         //in my database, customerId 8 means jasen
         customerAddr.setCustomerId(8);
         customerAddr.setAddress(ADDRESS);
