@@ -63,7 +63,7 @@ public class Test1 {
         customerAddr.setProvince(2);
         customerAddr.setCity(1);
         customerAddr.setDistrict(2);
-        customerAddr.setZip(23);
+        customerAddr.setZip("23");
         customerAddr.setIsDefault(1);
         this.newCustomerAddrService.inserAddrData(customerAddr);
     }

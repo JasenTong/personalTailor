@@ -79,4 +79,12 @@ public class CustomerLogin implements Serializable {
     public void setUserStatus(Integer userStatus) {
         this.userStatus = userStatus;
     }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
 }

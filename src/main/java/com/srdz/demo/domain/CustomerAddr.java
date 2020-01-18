@@ -43,7 +43,7 @@ public class CustomerAddr implements Serializable {
     /**
      * 邮编
      */
-    private Integer zip;
+    private String zip;
 
     /**
      * 地区表中省份的ID
@@ -84,11 +84,11 @@ public class CustomerAddr implements Serializable {
         this.customerId = customerId;
     }
 
-    public Integer getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(Integer zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 

@@ -60,7 +60,7 @@ public class CustomerInf implements Serializable {
     /**
      * 手机号
      */
-    private Integer mobilePhone;
+    private String mobilePhone;
 
     /**
      * 邮箱
@@ -103,4 +103,99 @@ public class CustomerInf implements Serializable {
     private Date modifiedTime;
 
 
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public Integer getIdentityCardType() {
+        return identityCardType;
+    }
+
+    public void setIdentityCardType(Integer identityCardType) {
+        this.identityCardType = identityCardType;
+    }
+
+    public String getIdentityCardNo() {
+        return identityCardNo;
+    }
+
+    public void setIdentityCardNo(String identityCardNo) {
+        this.identityCardNo = identityCardNo;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Integer getUserPoint() {
+        return userPoint;
+    }
+
+    public void setUserPoint(Integer userPoint) {
+        this.userPoint = userPoint;
+    }
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Integer getCustomerLevel() {
+        return customerLevel;
+    }
+
+    public void setCustomerLevel(Integer customerLevel) {
+        this.customerLevel = customerLevel;
+    }
+
+    public BigDecimal getUserMoney() {
+        return userMoney;
+    }
+
+    public void setUserMoney(BigDecimal userMoney) {
+        this.userMoney = userMoney;
+    }
 }
