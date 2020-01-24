@@ -14,7 +14,7 @@ public class CommonReturn {
     public CommonReturn fail(){
         CommonReturn commonReturn=new CommonReturn();
         commonReturn.setCode(500);
-        commonReturn.setSuccess("fail");
+        commonReturn.setSuccess("FAIL");
         return commonReturn;
     }
 

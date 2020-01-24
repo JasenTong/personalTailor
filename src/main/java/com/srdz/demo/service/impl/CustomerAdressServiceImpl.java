@@ -7,5 +7,5 @@ import com.srdz.demo.service.ICustomerAddrService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerAdressImpl extends ServiceImpl<CustomerAddrMapper, CustomerAddr> implements ICustomerAddrService {
+public class CustomerAdressServiceImpl extends ServiceImpl<CustomerAddrMapper, CustomerAddr> implements ICustomerAddrService {
 }

@@ -61,4 +61,11 @@ public class DesignerLogin implements Serializable {
     private Date modifiedTime;
 
 
+    public Integer getDesignerId() {
+        return designerId;
+    }
+
+    public void setDesignerId(Integer designerId) {
+        this.designerId = designerId;
+    }
 }

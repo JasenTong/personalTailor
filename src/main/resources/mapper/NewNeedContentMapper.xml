@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.srdz.demo.mapper.NewNeedContentMapper">
+
+    <insert id="insertNeedConttent" parameterType="com.srdz.demo.domain.NeedContent">
+        INSERT INTO  need_content(costomer_id,designer_id,content,status)
+        VALUES (#{customerId},#{designerId},#{content},1)
+    </insert>
+
+    <insert id="insertPlanContentByContnetId" parameterType="com.srdz.demo.domain.NeedContent">
+        UPDATE  need_content SET plan_content=#{planContent},status=2
+        WHERE need_content_id=#{needContentId}
+    </insert>
+
+    <select id="queryNeedContentByCustomerId" resultType="com.srdz.demo.domain.NeedContent">
+        SELECT * FROM need_content
+        WHERE costomer_id=#{customerId}
+    </select>
+
+    <select id="queryNeedContentByDesignerId" resultType="com.srdz.demo.domain.NeedContent">
+        SELECT * FROM need_content
+        where designer_id=#{designerId}
+    </select>
+
+</mapper>

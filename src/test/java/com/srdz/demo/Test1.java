@@ -2,11 +2,17 @@ package com.srdz.demo;
 
 import com.srdz.demo.domain.CustomerAddr;
 import com.srdz.demo.domain.CustomerLogin;
+import com.srdz.demo.domain.NeedContent;
 import com.srdz.demo.service.ICustomerLoginService;
+import com.srdz.demo.service.INeedContentService;
 import com.srdz.demo.service.NewCustomerAddrService;
+import com.srdz.demo.service.NewNeedContentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,6 +30,9 @@ public class Test1 {
 
     @Autowired
     private NewCustomerAddrService newCustomerAddrService;
+
+    @Autowired
+    private NewNeedContentService newNeedContentService;
 
     /**
      * use in mybatis plus framework
@@ -66,6 +75,42 @@ public class Test1 {
         customerAddr.setZip("23");
         customerAddr.setIsDefault(1);
         this.newCustomerAddrService.inserAddrData(customerAddr);
+    }
+
+    @Test
+    public void insetNeedContent() {
+        NeedContent needContent = new NeedContent();
+        needContent.setDesignerId(1);
+        needContent.setCustomerId(1);
+        needContent.setContent("hello!jasen's first trying,I will success");
+        this.newNeedContentService.insertNeedContent(needContent);
+    }
+
+    @Test
+    public void insetPlanContent() {
+        NeedContent needContent = new NeedContent();
+        needContent.setNeedContentId(1);
+        needContent.setPlanContent("ok,I will give the plan");
+        this.newNeedContentService.insertPlanContentByContnetId(needContent);
+    }
+
+    @Test
+    public void queryNeedContent() {
+        System.out.println("show:");
+        List<NeedContent> list=new ArrayList<>();
+        list=this.newNeedContentService.queryNeedContentByCustomerId(1);
+        System.out.println("show");
+        System.out.println(list);
+        System.out.println("show");
+    }
+
+    @Test
+    public void queryNeedcontent1(){
+        System.out.println("show");
+        List<NeedContent> list=new ArrayList<>();
+        list=this.newNeedContentService.queryNeedContentByDesignerId(1);
+        System.out.println(list);
+        System.out.println("show");
     }
 
 }
