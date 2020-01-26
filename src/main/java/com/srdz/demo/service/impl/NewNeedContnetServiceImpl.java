@@ -28,9 +28,13 @@ public class NewNeedContnetServiceImpl implements NewNeedContentService {
         return list;
     }
 
-    public List<NeedContent>queryNeedContentByDesignerId(Integer designerId){
-        List<NeedContent>list=new ArrayList<>();
-        list=this.newNeedContentMapper.queryNeedContentByDesignerId(designerId);
+    public List<NeedContent> queryNeedContentByDesignerId(Integer designerId) {
+        List<NeedContent> list = new ArrayList<>();
+        list = this.newNeedContentMapper.queryNeedContentByDesignerId(designerId);
         return list;
+    }
+
+    public void updateStatus(Integer needContentId, Integer status) {
+        this.newNeedContentMapper.updateStatus(needContentId, status);
     }
 }

@@ -59,7 +59,7 @@ public class DesignerInf implements Serializable {
     /**
      * 手机号
      */
-    private Integer mobilePhone;
+    private String mobilePhone;
 
     /**
      * 邮箱
@@ -102,4 +102,99 @@ public class DesignerInf implements Serializable {
     private Date modifiedTime;
 
 
+    public Integer getDesignerId() {
+        return designerId;
+    }
+
+    public void setDesignerId(Integer designerId) {
+        this.designerId = designerId;
+    }
+
+    public String getDesignerName() {
+        return designerName;
+    }
+
+    public void setDesignerName(String designerName) {
+        this.designerName = designerName;
+    }
+
+    public Integer getIdentityCardType() {
+        return identityCardType;
+    }
+
+    public void setIdentityCardType(Integer identityCardType) {
+        this.identityCardType = identityCardType;
+    }
+
+    public String getIdentityCardNo() {
+        return identityCardNo;
+    }
+
+    public void setIdentityCardNo(String identityCardNo) {
+        this.identityCardNo = identityCardNo;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getDesignerEmail() {
+        return designerEmail;
+    }
+
+    public void setDesignerEmail(String designerEmail) {
+        this.designerEmail = designerEmail;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Integer getUserPoint() {
+        return userPoint;
+    }
+
+    public void setUserPoint(Integer userPoint) {
+        this.userPoint = userPoint;
+    }
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Integer getDesignerLevel() {
+        return designerLevel;
+    }
+
+    public void setDesignerLevel(Integer designerLevel) {
+        this.designerLevel = designerLevel;
+    }
+
+    public BigDecimal getUserMoney() {
+        return userMoney;
+    }
+
+    public void setUserMoney(BigDecimal userMoney) {
+        this.userMoney = userMoney;
+    }
 }

@@ -2,6 +2,7 @@ package com.srdz.demo.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.srdz.demo.domain.DesignerInf;
 import com.srdz.demo.domain.DesignerLogin;
 
 /**
@@ -14,4 +15,7 @@ import com.srdz.demo.domain.DesignerLogin;
  */
 public interface IDesignerLoginService extends IService<DesignerLogin> {
 
+    public Integer getDesignerId(DesignerLogin designerLogin);
+
+    public Boolean designerSignUp(DesignerLogin designerLogin, DesignerInf designerInf);
 }

@@ -12,6 +12,8 @@ public interface NewNeedContentMapper {
 
     public void insertPlanContentByContnetId(NeedContent needContent);
 
+    public void updateStatus(Integer needContentId,Integer status);
+
     public List<NeedContent> queryNeedContentByCustomerId(Integer customerId);
 
     public List<NeedContent> queryNeedContentByDesignerId(Integer designerId);

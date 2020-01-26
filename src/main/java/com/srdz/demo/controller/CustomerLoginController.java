@@ -24,37 +24,52 @@ import java.util.List;
 public class CustomerLoginController {
 
     @Autowired
-    private ICustomerInfService iCustomerInfService;
-    @Autowired
-    private ICustomerLoginService iCustomerLoginService;
-    @Autowired
-    private ICustomerAddrService iCustomerAddrService;
+    private ICustomerLoginService customerLoginService;
 
     CommonReturn commonReturn = new CommonReturn();
 
-    @GetMapping("signUp")
+    @GetMapping("signup")
     public CommonReturn customerSignUp(HttpServletRequest request) {
+        //1、customerLogin table
         CustomerLogin customerLogin = new CustomerLogin();
-        //read data
+        CustomerInf customerInf = new CustomerInf();
+        CustomerAddr customerAddr = new CustomerAddr();
         String loginName = request.getParameter("loginName");
         String password = request.getParameter("password");
-        customerLogin.setLoginName(loginName);
-        customerLogin.setPassword(password);
-        //default status
         customerLogin.setUserStatus(1);
-        boolean flag = this.iCustomerLoginService.save(customerLogin);
-        //add data to customer_inf and customer_addr
-        if (true == flag) {
-            int customerId = getCustomerLoginInfo(customerLogin).getCustomerId();
-            boolean flag1 = insertCustomerInf(request, customerId);
-            boolean flag2 = insertCustomerAddr(request, customerId);
-            if (flag1 && flag2) {
-                return this.commonReturn.success();
-            } else {
-                return this.commonReturn.fail();
-            }
+        if (null != loginName && null != password) {
+            customerLogin.setLoginName(loginName);
+            customerLogin.setPassword(password);
         } else {
-            return this.commonReturn.fail();
+            return commonReturn.fail();
+        }
+
+        //2、customerInf table
+        customerInf.setCustomerName(request.getParameter("customerName"));
+        Date date = new Date();
+        customerInf.setRegisterTime(date);
+        customerInf.setBirthday(date);
+        customerInf.setCustomerEmail(request.getParameter("customerEmail"));
+        customerInf.setCustomerLevel(1);
+        customerInf.setGender(request.getParameter("gender"));
+        customerInf.setIdentityCardNo("100010100110");
+        customerInf.setIdentityCardType(1);
+        customerInf.setMobilePhone(request.getParameter("mobilePhone"));
+        customerInf.setUserPoint(1);
+
+        //3、customerAddress table
+        //default not necessary
+        customerAddr.setIsDefault(1);
+        customerAddr.setProvince(1);
+        customerAddr.setDistrict(1);
+        customerAddr.setCity(1);
+        customerAddr.setZip(request.getParameter("zip"));
+        customerAddr.setAddress(request.getParameter("address"));
+        boolean flag = this.customerLoginService.customerSignUp(customerLogin, customerInf, customerAddr);
+        if(flag){
+            return commonReturn.success();
+        }else {
+            return commonReturn.fail();
         }
     }
 
@@ -69,49 +84,20 @@ public class CustomerLoginController {
         }
     }
 
+    /**
+     * @param customerLogin query table of customerLogin
+     * @return
+     */
     private CustomerLogin getCustomerLoginInfo(CustomerLogin customerLogin) {
         QueryWrapper<CustomerLogin> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
                 .eq(CustomerLogin::getLoginName, customerLogin.getLoginName())
                 .eq(CustomerLogin::getPassword, customerLogin.getPassword());
-        List<CustomerLogin> list = this.iCustomerLoginService.list(queryWrapper);
+        List<CustomerLogin> list = this.customerLoginService.list(queryWrapper);
         if (CollectionUtils.isEmpty(list)) {
             return null;
         } else {
             return list.get(0);
         }
-    }
-
-    private boolean insertCustomerInf(HttpServletRequest request, int customerId) {
-        CustomerInf customerInf = new CustomerInf();
-        customerInf.setCustomerName(request.getParameter("customerName"));
-        Date date=new Date();
-        customerInf.setRegisterTime(date);
-        customerInf.setBirthday(date);
-        customerInf.setCustomerEmail(request.getParameter("customerEmail"));
-        customerInf.setCustomerId(customerId);
-        customerInf.setCustomerLevel(1);
-        customerInf.setGender(request.getParameter("gender"));
-        //default not necessary
-        customerInf.setIdentityCardNo("100010100110");
-        customerInf.setIdentityCardType(1);
-        customerInf.setMobilePhone(request.getParameter("mobilePhone"));
-        customerInf.setUserPoint(1);
-        boolean flag = this.iCustomerInfService.save(customerInf);
-        return flag;
-    }
-
-    private boolean insertCustomerAddr(HttpServletRequest request, int customerId) {
-        CustomerAddr customerAddr = new CustomerAddr();
-        customerAddr.setCustomerId(customerId);
-        //default not necessary
-        customerAddr.setIsDefault(1);
-        customerAddr.setProvince(1);
-        customerAddr.setDistrict(1);
-        customerAddr.setCity(1);
-        customerAddr.setZip(request.getParameter("zip"));
-        customerAddr.setAddress(request.getParameter("address"));
-        boolean flag = this.iCustomerAddrService.save(customerAddr);
-        return flag;
     }
 }

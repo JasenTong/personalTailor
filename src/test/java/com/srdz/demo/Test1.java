@@ -4,7 +4,6 @@ import com.srdz.demo.domain.CustomerAddr;
 import com.srdz.demo.domain.CustomerLogin;
 import com.srdz.demo.domain.NeedContent;
 import com.srdz.demo.service.ICustomerLoginService;
-import com.srdz.demo.service.INeedContentService;
 import com.srdz.demo.service.NewCustomerAddrService;
 import com.srdz.demo.service.NewNeedContentService;
 import org.junit.jupiter.api.Test;
@@ -82,6 +81,7 @@ public class Test1 {
         NeedContent needContent = new NeedContent();
         needContent.setDesignerId(1);
         needContent.setCustomerId(1);
+        needContent.setNeedTitle("蛋糕定制");
         needContent.setContent("hello!jasen's first trying,I will success");
         this.newNeedContentService.insertNeedContent(needContent);
     }
@@ -89,28 +89,36 @@ public class Test1 {
     @Test
     public void insetPlanContent() {
         NeedContent needContent = new NeedContent();
-        needContent.setNeedContentId(1);
+        needContent.setNeedContentId(3);
         needContent.setPlanContent("ok,I will give the plan");
+        needContent.setNeedMoney(23.45);
         this.newNeedContentService.insertPlanContentByContnetId(needContent);
     }
 
     @Test
     public void queryNeedContent() {
         System.out.println("show:");
-        List<NeedContent> list=new ArrayList<>();
-        list=this.newNeedContentService.queryNeedContentByCustomerId(1);
+        List<NeedContent> list = new ArrayList<>();
+        list = this.newNeedContentService.queryNeedContentByCustomerId(1);
         System.out.println("show");
         System.out.println(list);
         System.out.println("show");
     }
 
     @Test
-    public void queryNeedcontent1(){
+    public void queryNeedcontent1() {
         System.out.println("show");
-        List<NeedContent> list=new ArrayList<>();
-        list=this.newNeedContentService.queryNeedContentByDesignerId(1);
+        List<NeedContent> list = new ArrayList<>();
+        list = this.newNeedContentService.queryNeedContentByDesignerId(1);
         System.out.println(list);
         System.out.println("show");
+    }
+
+    @Test
+    public void updateStatus() {
+        Integer needContentId = 1;
+        Integer status = 100;
+        this.newNeedContentService.updateStatus(needContentId,status);
     }
 
 }

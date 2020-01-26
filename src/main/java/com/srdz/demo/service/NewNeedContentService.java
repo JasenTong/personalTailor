@@ -23,10 +23,17 @@ public interface NewNeedContentService {
     public List<NeedContent> queryNeedContentByCustomerId(Integer customerId);
 
     /**
-     *
      * @param designerId 设计师id
      * @return 消费者列表
      */
-    public List<NeedContent>queryNeedContentByDesignerId(Integer designerId);
+    public List<NeedContent> queryNeedContentByDesignerId(Integer designerId);
+
+    /**
+     * 更新状态
+     *
+     * @param needContentId 需求表id
+     * @param status        状态值
+     */
+    public void updateStatus(Integer needContentId, Integer status);
 
 }

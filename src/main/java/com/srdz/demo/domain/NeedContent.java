@@ -51,9 +51,19 @@ public class NeedContent implements Serializable {
 
     /**
      * 需求表的状态
-     * 1 提交需求 2 给出方案 3 确认定制 4 放弃 6 生成订单
+     * 1 提交需求 2 给出方案 3 确认定制 4 放弃 5 生成订单
      */
     private Integer status;
+
+    /**
+     * 需求方案价格
+     */
+    private Double needMoney;
+
+    /**
+     * 需求标题
+     */
+    private String needTitle;
 
     /**
      * 最后修改时间
@@ -107,5 +117,21 @@ public class NeedContent implements Serializable {
 
     public void setNeedContentId(Integer needContentId) {
         this.needContentId = needContentId;
+    }
+
+    public Double getNeedMoney() {
+        return needMoney;
+    }
+
+    public void setNeedMoney(Double needMoney) {
+        this.needMoney = needMoney;
+    }
+
+    public String getNeedTitle() {
+        return needTitle;
+    }
+
+    public void setNeedTitle(String needTitle) {
+        this.needTitle = needTitle;
     }
 }

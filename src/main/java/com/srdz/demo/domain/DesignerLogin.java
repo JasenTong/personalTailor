@@ -36,11 +36,6 @@ public class DesignerLogin implements Serializable {
     private Integer designerId;
 
     /**
-     * warehouse of designer
-     */
-    private Integer wId;
-
-    /**
      * 用户登录名
      */
     private String loginName;
@@ -49,6 +44,11 @@ public class DesignerLogin implements Serializable {
      * md5加密的密码
      */
     private String password;
+
+    /**
+     * 店铺页面
+     */
+    private String pageUrl;
 
     /**
      * 用户状态
@@ -68,4 +68,37 @@ public class DesignerLogin implements Serializable {
     public void setDesignerId(Integer designerId) {
         this.designerId = designerId;
     }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public String getPageUrl() {
+        return pageUrl;
+    }
+
+    public void setPageUrl(String pageUrl) {
+        this.pageUrl = pageUrl;
+    }
+
 }
