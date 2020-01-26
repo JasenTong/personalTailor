@@ -3,8 +3,8 @@
 <mapper namespace="com.srdz.demo.mapper.NewNeedContentMapper">
 
     <insert id="insertNeedConttent" parameterType="com.srdz.demo.domain.NeedContent">
-        INSERT INTO  need_content(costomer_id,designer_id,need_title,content,status)
-        VALUES (#{customerId},#{designerId},#{needTitle},#{content},1)
+        INSERT INTO  need_content(costomer_id,designer_id,need_title,content,need_count,status)
+        VALUES (#{customerId},#{designerId},#{needTitle},#{content},#{needCount},1)
     </insert>
 
     <insert id="insertPlanContentByContnetId" parameterType="com.srdz.demo.domain.NeedContent">

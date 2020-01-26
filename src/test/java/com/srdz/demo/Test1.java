@@ -81,6 +81,7 @@ public class Test1 {
         NeedContent needContent = new NeedContent();
         needContent.setDesignerId(1);
         needContent.setCustomerId(1);
+        needContent.setNeedCount(10);
         needContent.setNeedTitle("蛋糕定制");
         needContent.setContent("hello!jasen's first trying,I will success");
         this.newNeedContentService.insertNeedContent(needContent);
@@ -89,9 +90,9 @@ public class Test1 {
     @Test
     public void insetPlanContent() {
         NeedContent needContent = new NeedContent();
-        needContent.setNeedContentId(3);
+        needContent.setNeedContentId(4);
         needContent.setPlanContent("ok,I will give the plan");
-        needContent.setNeedMoney(23.45);
+        needContent.setNeedMoney(234.5);
         this.newNeedContentService.insertPlanContentByContnetId(needContent);
     }
 

@@ -30,6 +30,7 @@ public class NeedContentController {
         DesignerLogin designerLogin = (DesignerLogin) session.getAttribute("designer");
         String title = request.getParameter("tittle");
         String content = request.getParameter("content");
+        Integer needCount = Integer.parseInt(request.getParameter("needCount"));
         if (null == customerLoginInf) {
             return commonReturn.fail();
         }
@@ -37,6 +38,7 @@ public class NeedContentController {
         needContent.setDesignerId(designerLogin.getDesignerId());
         needContent.setNeedTitle(title);
         needContent.setContent(content);
+        needContent.setNeedCount(needCount);
         this.newNeedContentService.insertNeedContent(needContent);
         return commonReturn.success();
     }
@@ -50,7 +52,7 @@ public class NeedContentController {
             needContent.setNeedMoney(needMoney);
             this.newNeedContentService.insertPlanContentByContnetId(needContent);
             return commonReturn.success();
-        }else{
+        } else {
             return commonReturn.fail();
         }
     }

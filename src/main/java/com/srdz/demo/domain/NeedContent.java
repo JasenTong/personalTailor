@@ -66,6 +66,11 @@ public class NeedContent implements Serializable {
     private String needTitle;
 
     /**
+     * 需求商品数量
+     */
+    private Integer needCount;
+
+    /**
      * 最后修改时间
      */
     private Date modifiedTime;
@@ -133,5 +138,13 @@ public class NeedContent implements Serializable {
 
     public void setNeedTitle(String needTitle) {
         this.needTitle = needTitle;
+    }
+
+    public Integer getNeedCount() {
+        return needCount;
+    }
+
+    public void setNeedCount(Integer needCount) {
+        this.needCount = needCount;
     }
 }
