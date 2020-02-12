@@ -82,6 +82,7 @@ public class CustomerLoginController {
         } else {
             session.setAttribute("customer", customer);
             mv.addObject(this.commonReturn.success());
+            mv.addObject("loginName", customer.getLoginName());
             mv.setViewName("index");
         }
         return mv;
