@@ -1,6 +1,7 @@
 package com.srdz.demo.service;
 
 import com.srdz.demo.domain.NeedContent;
+import com.srdz.demo.domain.OrderMaster;
 
 import java.util.List;
 
@@ -17,23 +18,32 @@ public interface NewNeedContentService {
     public void insertPlanContentByContnetId(NeedContent needContent);
 
     /**
-     * @param customerId 消费者id
-     * @return 消费者列表
+     * @param customerId
+     * @return
      */
     public List<NeedContent> queryNeedContentByCustomerId(Integer customerId);
 
     /**
-     * @param designerId 设计师id
-     * @return 消费者列表
+     * @param designerId
+     * @return
      */
     public List<NeedContent> queryNeedContentByDesignerId(Integer designerId);
 
     /**
-     * 更新状态
+     * update status
      *
-     * @param needContentId 需求表id
-     * @param status        状态值
+     * @param needContentId
+     * @param status
      */
     public void updateStatus(Integer needContentId, Integer status);
+
+    /**
+     * generator order information
+     *
+     * @param orderMaster
+     * @param needContent
+     * @return
+     */
+    public Boolean confirm(OrderMaster orderMaster, NeedContent needContent) throws Exception;
 
 }

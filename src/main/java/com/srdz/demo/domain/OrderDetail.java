@@ -77,14 +77,80 @@ public class OrderDetail implements Serializable {
     private BigDecimal feeMoney;
 
     /**
-     * 仓库ID
-     */
-    private Integer wId;
-
-    /**
      * 最后修改时间
      */
     private Date modifiedTime;
 
 
+    public Integer getOrderDetailId() {
+        return orderDetailId;
+    }
+
+    public void setOrderDetailId(Integer orderDetailId) {
+        this.orderDetailId = orderDetailId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public Integer getContentId() {
+        return contentId;
+    }
+
+    public void setContentId(Integer contentId) {
+        this.contentId = contentId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Integer getProductCnt() {
+        return productCnt;
+    }
+
+    public void setProductCnt(Integer productCnt) {
+        this.productCnt = productCnt;
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public BigDecimal getAverageCost() {
+        return averageCost;
+    }
+
+    public void setAverageCost(BigDecimal averageCost) {
+        this.averageCost = averageCost;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public BigDecimal getFeeMoney() {
+        return feeMoney;
+    }
+
+    public void setFeeMoney(BigDecimal feeMoney) {
+        this.feeMoney = feeMoney;
+    }
 }

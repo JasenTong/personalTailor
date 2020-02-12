@@ -1,9 +1,6 @@
 package com.srdz.demo.controller;
 
-import com.srdz.demo.domain.CommonReturn;
-import com.srdz.demo.domain.CustomerLogin;
-import com.srdz.demo.domain.DesignerLogin;
-import com.srdz.demo.domain.NeedContent;
+import com.srdz.demo.domain.*;
 import com.srdz.demo.service.NewNeedContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/need")
@@ -22,7 +20,13 @@ public class NeedContentController {
     @Autowired
     private NewNeedContentService newNeedContentService;
 
-
+    /**
+     * generator needing content
+     *
+     * @param request
+     * @param session
+     * @return
+     */
     @GetMapping("content")
     public CommonReturn creatNeedContent(HttpServletRequest request, HttpSession session) {
         NeedContent needContent = new NeedContent();
@@ -43,6 +47,13 @@ public class NeedContentController {
         return commonReturn.success();
     }
 
+    /**
+     * fill the plan content
+     *
+     * @param request
+     * @param needContent
+     * @return
+     */
     @GetMapping("plancontent")
     public CommonReturn createPlanContent(HttpServletRequest request, NeedContent needContent) {
         String planContent = request.getParameter("planContent");
@@ -54,6 +65,35 @@ public class NeedContentController {
             return commonReturn.success();
         } else {
             return commonReturn.fail();
+        }
+    }
+
+    /**
+     * generator orderMaster and detail
+     *
+     * @param request
+     * @param needContent
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("confirm")
+    public CommonReturn confirmPay(HttpServletRequest request, NeedContent needContent) throws Exception {
+        try {
+            OrderMaster orderMaster = new OrderMaster();
+            //get pay method and pay money
+            Integer wayPay = Integer.parseInt(request.getParameter("pay"));
+            BigDecimal payMoney = new BigDecimal(request.getParameter("payMoney"));
+            orderMaster.setPaymentMethod(wayPay);
+            orderMaster.setPaymentMoney(payMoney);
+            orderMaster.setOrderMoney(payMoney);
+            Boolean flag = this.newNeedContentService.confirm(orderMaster, needContent);
+            if (flag) {
+                return commonReturn.success();
+            } else {
+                return commonReturn.fail();
+            }
+        } catch (Exception e) {
+            throw new Exception();
         }
     }
 }

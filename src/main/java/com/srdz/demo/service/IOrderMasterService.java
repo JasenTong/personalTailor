@@ -14,4 +14,6 @@ import com.srdz.demo.domain.OrderMaster;
  */
 public interface IOrderMasterService extends IService<OrderMaster> {
 
+    public Boolean continuePay(OrderMaster orderMaster) throws Exception;
+
 }
