@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header" style="height: 100px">
+                <h1>
+                    登录信息 <small>私人定制系统</small>
+                </h1>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-6 column">
+                    <img width="400" height="400"
+                         src="https://bkimg.cdn.bcebos.com/pic/80cb39dbb6fd526688a773faa118972bd507364b?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UxNTA=,xp_5,yp_5"
+                         class="img-rounded"/>
+                </div>
+                <div class="col-md-6 column" style="height: 500px">
+                    <br>
+                    <form action="/customer/login" method="post" class="form-horizontal" role="form" name="loginForm">
+                        <div class="form-group">
+                            <label for="loginName" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" style="height:50px" id="loginName"
+                                       name="loginName"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" style="height: 50px" id="password"
+                                       name="password"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" style="height: 50px" class="btn btn-default"
+                                        onclick="check(this.form)">登录
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function check(form) {
+        document.loginForm.submit();
+    }
+</script>
+</body>
+</html>

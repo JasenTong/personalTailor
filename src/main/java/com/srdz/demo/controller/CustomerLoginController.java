@@ -10,9 +10,8 @@ import com.srdz.demo.service.ICustomerInfService;
 import com.srdz.demo.service.ICustomerLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -66,22 +65,26 @@ public class CustomerLoginController {
         customerAddr.setZip(request.getParameter("zip"));
         customerAddr.setAddress(request.getParameter("address"));
         boolean flag = this.customerLoginService.customerSignUp(customerLogin, customerInf, customerAddr);
-        if(flag){
+        if (flag) {
             return commonReturn.success();
-        }else {
+        } else {
             return commonReturn.fail();
         }
     }
 
-    @GetMapping("login")
-    public CommonReturn login(CustomerLogin customerLogin, HttpSession session) {
+    @PostMapping("login")
+    public ModelAndView login(CustomerLogin customerLogin, HttpSession session) {
+        ModelAndView mv = new ModelAndView();
         CustomerLogin customer = getCustomerLoginInfo(customerLogin);
         if (null == customer) {
-            return this.commonReturn.fail();
+            mv.addObject(this.commonReturn.fail());
+            mv.setViewName("customer/login");
         } else {
-            session.setAttribute("costumer", customer);
-            return this.commonReturn.success();
+            session.setAttribute("customer", customer);
+            mv.addObject(this.commonReturn.success());
+            mv.setViewName("index");
         }
+        return mv;
     }
 
     /**

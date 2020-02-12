@@ -16,9 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class testController {
 
 
-    @RequestMapping("index")
+    @GetMapping("index")
     public String show() {
         return "index";
     }
 
+    @GetMapping("login")
+    public String login(){
+        return "customer/login";
+    }
+
+    @GetMapping("signUp")
+    public String signUp(){
+        return "customer/signUp";
+    }
 }
