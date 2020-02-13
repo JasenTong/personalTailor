@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class NewNeedContnetServiceImpl implements NewNeedContentService {
+public class NewNeedContentServiceImpl implements NewNeedContentService {
 
     @Autowired
     private NewNeedContentMapper newNeedContentMapper;

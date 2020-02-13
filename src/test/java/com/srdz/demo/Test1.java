@@ -93,7 +93,7 @@ public class Test1 {
         needContent.setNeedContentId(4);
         needContent.setPlanContent("ok,I will give the plan");
         needContent.setNeedMoney(234.5);
-        this.newNeedContentService.insertPlanContentByContnetId(needContent);
+        this.newNeedContentService.insertPlanContentByContentId(needContent);
     }
 
     @Test
