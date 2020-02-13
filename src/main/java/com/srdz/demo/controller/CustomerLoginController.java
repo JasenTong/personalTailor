@@ -27,8 +27,9 @@ public class CustomerLoginController {
 
     CommonReturn commonReturn = new CommonReturn();
 
-    @GetMapping("signup")
-    public CommonReturn customerSignUp(HttpServletRequest request) {
+    @PostMapping("signUp")
+    public ModelAndView customerSignUp(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
         //1、customerLogin table
         CustomerLogin customerLogin = new CustomerLogin();
         CustomerInf customerInf = new CustomerInf();
@@ -40,7 +41,9 @@ public class CustomerLoginController {
             customerLogin.setLoginName(loginName);
             customerLogin.setPassword(password);
         } else {
-            return commonReturn.fail();
+            mv.setViewName("/customer/login");
+            mv.addObject(commonReturn.fail());
+            return mv;
         }
 
         //2、customerInf table
@@ -66,9 +69,13 @@ public class CustomerLoginController {
         customerAddr.setAddress(request.getParameter("address"));
         boolean flag = this.customerLoginService.customerSignUp(customerLogin, customerInf, customerAddr);
         if (flag) {
-            return commonReturn.success();
+            mv.addObject(commonReturn.success());
+            mv.setViewName("/customer/login");
+            return mv;
         } else {
-            return commonReturn.fail();
+            mv.addObject(commonReturn.fail());
+            mv.setViewName("/customer/signUp");
+            return mv;
         }
     }
 
