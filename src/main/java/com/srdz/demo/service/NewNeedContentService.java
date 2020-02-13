@@ -15,7 +15,7 @@ public interface NewNeedContentService {
     /**
      * @param needContent insert plan content
      */
-    public void insertPlanContentByContnetId(NeedContent needContent);
+    public void insertPlanContentByContentId(NeedContent needContent);
 
     /**
      * @param customerId

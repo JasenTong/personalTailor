@@ -61,7 +61,7 @@ public class NeedContentController {
         if (null != needContent && null != planContent && null != needMoney) {
             needContent.setPlanContent(planContent);
             needContent.setNeedMoney(needMoney);
-            this.newNeedContentService.insertPlanContentByContnetId(needContent);
+            this.newNeedContentService.insertPlanContentByContentId(needContent);
             return commonReturn.success();
         } else {
             return commonReturn.fail();
