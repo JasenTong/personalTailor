@@ -128,7 +128,7 @@ public class CustomerLoginController {
     }
 
     @PostMapping("changePassword")
-    public ModelAndView changePwd(HttpServletRequest request, HttpSession session) {
+    public ModelAndView changePwd(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         CustomerLogin customerLogin = new CustomerLogin();
         //1.get customerLogin from form
