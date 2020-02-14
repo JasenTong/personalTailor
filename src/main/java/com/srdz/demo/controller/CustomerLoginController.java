@@ -25,7 +25,7 @@ public class CustomerLoginController {
 
     private static final String CHANGEPWD_SUCCESS = "修改密码成功！";
 
-    private static final String CHANGEPWD_ERROR = "修改失败，检查手机号码是否正确！";
+    private static final String CHANGEPWD_ERROR = "修改失败，检查手机号码和用户名称是否正确！";
 
 
     CommonReturn commonReturn = new CommonReturn();
@@ -130,10 +130,11 @@ public class CustomerLoginController {
     @PostMapping("changePassword")
     public ModelAndView changePwd(HttpServletRequest request, HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        //1.get cutomer from session
-        CustomerLogin customerLogin = (CustomerLogin) session.getAttribute("customer");
+        CustomerLogin customerLogin = new CustomerLogin();
+        //1.get customerLogin from form
+        customerLogin.setLoginName(request.getParameter("loginName"));
         //2.get information about password and mobile phone
-        String pwd = request.getParameter("passwoerd");
+        String pwd = request.getParameter("password");
         String mobilePhone = request.getParameter("mobilePhone");
         Boolean flag = this.customerLoginService.changePwd(customerLogin, pwd, mobilePhone);
         if (flag) {
@@ -146,7 +147,7 @@ public class CustomerLoginController {
     }
 
     @PostMapping("logOut")
-    public ModelAndView logOut(HttpServletRequest request){
+    public ModelAndView logOut(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         request.getSession().invalidate();
         mv.setViewName("index");
