@@ -52,6 +52,7 @@ public class CustomerLoginServiceImpl extends ServiceImpl<CustomerLoginMapper, C
         }
     }
 
+    @Override
     @Transactional
     public Boolean customerSignUp(CustomerLogin customerLogin, CustomerInf customerInf, CustomerAddr customerAddr) {
         if (null != customerLogin && null != customerInf && null != customerAddr) {
@@ -79,6 +80,7 @@ public class CustomerLoginServiceImpl extends ServiceImpl<CustomerLoginMapper, C
      * @param customerInf
      * @return
      */
+    @Override
     public String SignUpCheck(CustomerLogin customerLogin, CustomerInf customerInf) {
         String loginName = customerLogin.getLoginName();
         String mobilePhone = customerInf.getMobilePhone();
@@ -120,6 +122,7 @@ public class CustomerLoginServiceImpl extends ServiceImpl<CustomerLoginMapper, C
      * @param mobilePhone
      * @return
      */
+    @Override
     public Boolean changePwd(CustomerLogin customerLogin, String mobilePhone, String pwd) {
         Integer customerId;
         QueryWrapper<CustomerLogin> queryWrapper = new QueryWrapper<>();
