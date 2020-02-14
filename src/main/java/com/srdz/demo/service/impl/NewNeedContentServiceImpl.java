@@ -33,7 +33,7 @@ public class NewNeedContentServiceImpl implements NewNeedContentService {
         this.newNeedContentMapper.insertNeedConttent(needContent);
     }
 
-    public void insertPlanContentByContnetId(NeedContent needContent) {
+    public void insertPlanContentByContentId(NeedContent needContent) {
         this.newNeedContentMapper.insertPlanContentByContnetId(needContent);
     }
 
