@@ -136,8 +136,8 @@ public class Test1 {
     @Test
     public void changePwd() {
         CustomerLogin customerLogin = new CustomerLogin();
-        customerLogin.setLoginName("jasenTEST");
-        String phone = "13955846598";
+        customerLogin.setLoginName("11111");
+        String phone = "13333333333";
         String pwd = "change202014";
         Boolean res=this.customerLoginService.changePwd(customerLogin, phone, pwd);
         System.out.println(res);
