@@ -1,6 +1,7 @@
 package com.srdz.demo;
 
 import com.srdz.demo.domain.CustomerAddr;
+import com.srdz.demo.domain.CustomerInf;
 import com.srdz.demo.domain.CustomerLogin;
 import com.srdz.demo.domain.NeedContent;
 import com.srdz.demo.service.ICustomerLoginService;
@@ -119,7 +120,27 @@ public class Test1 {
     public void updateStatus() {
         Integer needContentId = 1;
         Integer status = 100;
-        this.newNeedContentService.updateStatus(needContentId,status);
+        this.newNeedContentService.updateStatus(needContentId, status);
+    }
+
+    @Test
+    public void signUpTest() {
+        CustomerLogin customerLogin = new CustomerLogin();
+        CustomerInf customerInf = new CustomerInf();
+        customerLogin.setLoginName("jasen");
+        customerInf.setMobilePhone("15710631292");
+        String res = this.customerLoginService.SignUpCheck(customerLogin, customerInf);
+        System.out.println(res);
+    }
+
+    @Test
+    public void changePwd() {
+        CustomerLogin customerLogin = new CustomerLogin();
+        customerLogin.setLoginName("jasenTEST");
+        String phone = "13955846598";
+        String pwd = "change202014";
+        Boolean res=this.customerLoginService.changePwd(customerLogin, phone, pwd);
+        System.out.println(res);
     }
 
 }

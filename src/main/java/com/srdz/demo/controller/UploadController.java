@@ -31,7 +31,7 @@ public class UploadController {
 
         String fileName = file.getOriginalFilename();
         // TODO: need to upload server?
-        String filePath = "/Users/zfzhou/test/";
+        String filePath = "D:\\receive/";
         File dest = new File(filePath + fileName);
 
         if(!dest.getParentFile().exists()) {

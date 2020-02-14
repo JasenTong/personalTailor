@@ -18,4 +18,8 @@ public interface ICustomerLoginService extends IService<CustomerLogin> {
 
     public Boolean customerSignUp(CustomerLogin customerLogin, CustomerInf customerInf, CustomerAddr customerAddr);
 
+    public String SignUpCheck(CustomerLogin customerLogin, CustomerInf customerInf);
+
+    public Boolean changePwd(CustomerLogin customerLogin,String mobilePhone,String pwd);
+
 }

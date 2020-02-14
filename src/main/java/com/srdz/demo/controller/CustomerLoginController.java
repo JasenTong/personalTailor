@@ -5,8 +5,6 @@ import com.srdz.demo.domain.CommonReturn;
 import com.srdz.demo.domain.CustomerAddr;
 import com.srdz.demo.domain.CustomerInf;
 import com.srdz.demo.domain.CustomerLogin;
-import com.srdz.demo.service.ICustomerAddrService;
-import com.srdz.demo.service.ICustomerInfService;
 import com.srdz.demo.service.ICustomerLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
@@ -24,6 +22,11 @@ public class CustomerLoginController {
 
     @Autowired
     private ICustomerLoginService customerLoginService;
+
+    private static final String CHANGEPWD_SUCCESS = "修改密码成功！";
+
+    private static final String CHANGEPWD_ERROR = "修改失败，检查手机号码是否正确！";
+
 
     CommonReturn commonReturn = new CommonReturn();
 
@@ -67,13 +70,25 @@ public class CustomerLoginController {
         customerAddr.setCity(1);
         customerAddr.setZip(request.getParameter("zip"));
         customerAddr.setAddress(request.getParameter("address"));
-        boolean flag = this.customerLoginService.customerSignUp(customerLogin, customerInf, customerAddr);
-        if (flag) {
-            mv.addObject(commonReturn.success());
-            mv.setViewName("/customer/login");
-            return mv;
+
+        //check firstly
+        String checkRes = this.customerLoginService.SignUpCheck(customerLogin, customerInf);
+        if (null == checkRes) {
+            //pass sign up check
+            boolean flag = this.customerLoginService.customerSignUp(customerLogin, customerInf, customerAddr);
+            if (flag) {
+                mv.addObject(commonReturn.success());
+                mv.setViewName("/customer/login");
+                return mv;
+            } else {
+                mv.addObject(commonReturn.fail());
+                mv.setViewName("/customer/signUp");
+                return mv;
+            }
         } else {
+            //do not pass sign up check
             mv.addObject(commonReturn.fail());
+            mv.addObject(checkRes);
             mv.setViewName("/customer/signUp");
             return mv;
         }
@@ -110,5 +125,31 @@ public class CustomerLoginController {
         } else {
             return list.get(0);
         }
+    }
+
+    @PostMapping("changePassword")
+    public ModelAndView changePwd(HttpServletRequest request, HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        //1.get cutomer from session
+        CustomerLogin customerLogin = (CustomerLogin) session.getAttribute("customer");
+        //2.get information about password and mobile phone
+        String pwd = request.getParameter("passwoerd");
+        String mobilePhone = request.getParameter("mobilePhone");
+        Boolean flag = this.customerLoginService.changePwd(customerLogin, pwd, mobilePhone);
+        if (flag) {
+            mv.addObject(CHANGEPWD_SUCCESS);
+            return mv;
+        } else {
+            mv.addObject(CHANGEPWD_ERROR);
+            return mv;
+        }
+    }
+
+    @PostMapping("logOut")
+    public ModelAndView logOut(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        request.getSession().invalidate();
+        mv.setViewName("index");
+        return mv;
     }
 }
